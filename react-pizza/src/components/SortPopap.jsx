@@ -1,7 +1,14 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-export const SortPopap = () => {
+export const SortPopap = ({ items }) => {
   const [visibleSort, setVisibleSort] = React.useState(false);
+
+  const [settingsSort, setSettingsSort] = React.useState(0);
+
+  const changeSort = (index) => {
+    setSettingsSort(index);
+    setVisibleSort(false);
+  };
 
   const sortRef = React.useRef();
 
@@ -14,7 +21,7 @@ export const SortPopap = () => {
   }, []);
 
   const handleOutsideClick = (e) => {
-    if (e.path.includes(sortRef.current) === false) {
+    if (!e.path.includes(sortRef.current)) {
       setVisibleSort(false);
     }
   };
@@ -26,12 +33,11 @@ export const SortPopap = () => {
     };
   }, []);
 
-  const itemsSort = ['популярности', 'цене', 'алфавиту'];
-
   return (
     <div ref={sortRef} className='sort'>
       <div className='sort__label'>
         <svg
+          className={visibleSort ? 'rotated' : ''}
           width='10'
           height='6'
           viewBox='0 0 10 6'
@@ -44,14 +50,20 @@ export const SortPopap = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={toggleVisibleSort}>популярности</span>
+        <span onClick={toggleVisibleSort}>{items[settingsSort]}</span>
       </div>
       {visibleSort && (
         <div className='sort__popup'>
           <ul>
-            <li className='active'>популярности</li>
-            <li>цене</li>
-            <li>алфавиту</li>
+            {items &&
+              items.map((item, index) => (
+                <li
+                  onClick={() => changeSort(index)}
+                  className={settingsSort === index ? 'active' : ''}
+                >
+                  {item}
+                </li>
+              ))}
           </ul>
         </div>
       )}
