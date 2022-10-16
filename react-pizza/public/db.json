@@ -1,0 +1,124 @@
+{
+  "pizzas": [
+    {
+      "id": 0,
+      "imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
+      "name": "Чизбургер-пицца",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 395,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 1,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/a55f23f650344e1bb5bd43c7fc6e82fc_366x366.png",
+      "name": "Пепперони фреш",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 289,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/16ae64b429094953b4751dc9b472cf84_366x366.png",
+      "name": "Индейка с овощами гриль",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 499,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/ed3ab0e1c1e64cbb9bca07c90ae3ce7a_366x366.png",
+      "name": "Ветчина и грибы",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 399,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/13599e4aa568443ca2ac2c93f37e6df7_366x366.png",
+      "name": "Маргарита 🌱",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 399,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 5,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/08c5215bd7434a169646d26106ede90d_366x366.png",
+      "name": "Четыре сезона",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 439,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 6,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/03696708a015402c96b8875fcd98b19e_366x366.png",
+      "name": "Цыпленок барбекю",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 499,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 7,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/fa971e3178d445dcabc087b8104b79b0_366x366.png",
+      "name": "Диабло 🌶️🌶️",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 499,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 8,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/b5905cf333a2492fbfb38f3812c82718_366x366.png",
+      "name": "Колбаски барбекю",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 439,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 9,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/edd589e51e394a79ab2996e6a06415ec_366x366.png",
+      "name": "Гавайская",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 439,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 10,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/bce16b1b340f445297fd20ba21df29f2_366x366.png",
+      "name": "Цыпленок карри",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 439,
+      "category": 0,
+      "rating": 4
+    },
+    {
+      "id": 11,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/c1b205fe56e54b60a17911e5ae3ba7c3_366x366.png",
+      "name": "Сырная 🌱👶",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": 439,
+      "category": 0,
+      "rating": 4
+    }
+  ]
+}
