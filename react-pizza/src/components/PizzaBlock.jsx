@@ -1,11 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-export const PizzaBlock = ({ pizza }) => {
-  const types = ['тонкое', 'традиционное'];
-  const sizes = [26, 30, 40];
-  const [activeType, setActiveType] = React.useState(pizza.types[0]);
-  const [activeSizes, setActiveSizes] = React.useState(sizes.indexOf(pizza.sizes[0]));
+export const PizzaBlock = ({ types, imgUrl, name, sizes, id, price }) => {
+  const aviableTypes = ['тонкое', 'традиционное'];
+  const aviableSizes = [26, 30, 40];
+  const [activeType, setActiveType] = React.useState(types[0]);
+  const [activeSizes, setActiveSizes] = React.useState(aviableSizes.indexOf(sizes[0]));
   const clickTypesPizza = (index) => {
     setActiveType(index);
   };
@@ -13,18 +14,18 @@ export const PizzaBlock = ({ pizza }) => {
     setActiveSizes(index);
   };
   return (
-    <div key={pizza.id} className='pizza-block'>
-      <img className='pizza-block__image' src={pizza.imgUrl} alt='Pizza' />
-      <h4 className='pizza-block__title'>{pizza.name}</h4>
+    <div key={id} className='pizza-block'>
+      <img className='pizza-block__image' src={imgUrl} alt='Pizza' />
+      <h4 className='pizza-block__title'>{name}</h4>
       <div className='pizza-block__selector'>
         <ul>
-          {types.map((item, index) => (
+          {aviableTypes.map((item, index) => (
             <li
               key={index}
               onClick={() => clickTypesPizza(index)}
               className={classNames({
                 active: activeType === index,
-                disabled: !pizza.types.includes(index),
+                disabled: !types.includes(index),
               })}
             >
               {item}
@@ -32,13 +33,13 @@ export const PizzaBlock = ({ pizza }) => {
           ))}
         </ul>
         <ul>
-          {sizes.map((item, index) => (
+          {aviableSizes.map((item, index) => (
             <li
               key={index}
               onClick={() => clickSizesPizza(index)}
               className={classNames({
                 active: activeSizes === index,
-                disabled: !pizza.sizes.includes(item),
+                disabled: !sizes.includes(item),
               })}
             >
               {item} см.
@@ -47,7 +48,7 @@ export const PizzaBlock = ({ pizza }) => {
         </ul>
       </div>
       <div className='pizza-block__bottom'>
-        <div className='pizza-block__price'>от {pizza.price[activeSizes]} ₽</div>
+        <div className='pizza-block__price'>от {price[activeSizes]} ₽</div>
         <div className='button button--outline button--add'>
           <svg
             width='12'
@@ -67,4 +68,20 @@ export const PizzaBlock = ({ pizza }) => {
       </div>
     </div>
   );
+};
+
+PizzaBlock.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  types: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  imgUrl: PropTypes.string.isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  price: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+};
+
+PizzaBlock.defaultProps = {
+  name: '',
+  types: [],
+  price: [],
+  sizes: [],
 };
