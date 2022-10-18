@@ -50,7 +50,7 @@ export const SortPopap = ({ items }) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={toggleVisibleSort}>{items[settingsSort]}</span>
+        <span onClick={toggleVisibleSort}>{items[settingsSort].name}</span>
       </div>
       {visibleSort && (
         <div className='sort__popup'>
@@ -61,7 +61,7 @@ export const SortPopap = ({ items }) => {
                   onClick={() => changeSort(index)}
                   className={settingsSort === index ? 'active' : ''}
                 >
-                  {item}
+                  {item.name}
                 </li>
               ))}
           </ul>

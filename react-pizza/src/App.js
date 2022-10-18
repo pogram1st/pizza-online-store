@@ -1,22 +1,27 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
+
 import Header from './components/Header';
 import Home from './pages/Home';
 import { Cart } from './pages/Cart';
 
-function App() {
-  const [pizzas, setPizzas] = React.useState([]);
+import { setPizzas as setPizzasAction } from './redux/actions/pizzas';
+
+function App(props) {
+  console.log(props);
   const [catigories, setCatigories] = React.useState(0);
   const clickOnCatigories = (obj) => {
     console.log(obj);
   };
+
   React.useEffect(() => {
-    // fetch('http://localhost:3000/db.json')
-    // .then(data => (data.json()))
-    // .then(data => setPizzas(data.pizzas))
-    axios.get('http://localhost:3000/db.json').then(({ data }) => setPizzas(data.pizzas));
+    axios.get('http://localhost:3000/db.json').then(({ data }) => props.setPizzas(data.pizzas));
+    //axios.get('http://localhost:3000/db.json').then(({ data }) => props.dispatch(setPizzasAction(data.pizzas)));
+    // Запись если не использовать mapDispatchToProps в connect redux
   }, []);
+
   return (
     <div className='wrapper'>
       <Header />
@@ -26,7 +31,7 @@ function App() {
             path='/'
             element={
               <Home
-                pizzas={pizzas}
+                pizzas={props.items}
                 clickOnCatigories={clickOnCatigories}
                 catigories={catigories}
                 setCatigories={setCatigories}
@@ -41,4 +46,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    items: state.pizzas.items,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setPizzas: (items) => dispatch(setPizzasAction(items)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
