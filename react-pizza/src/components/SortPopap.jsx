@@ -30,7 +30,6 @@ export const SortPopap = React.memo(function SortPopap({ items, onClickSortType,
   React.useEffect(() => {
     return () => {
       document.body.removeEventListener('click', handleOutsideClick);
-      console.log('remove');
     };
   }, []);
 
