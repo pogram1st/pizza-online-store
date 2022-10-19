@@ -12,18 +12,21 @@
     "node-sass": "^7.0.3",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "npx json-server --watch public/db.json --port=3001"
   },
   "eslintConfig": {
     "extends": [

@@ -7,8 +7,8 @@
       "types": [0, 1],
       "sizes": [26, 30],
       "price": [395, 499, 599],
-      "category": 0,
-      "rating": 4
+      "category": 1,
+      "rating": 3
     },
     {
       "id": 1,
@@ -17,8 +17,8 @@
       "types": [0],
       "sizes": [30, 40],
       "price": [289, 399, 499],
-      "category": 0,
-      "rating": 4
+      "category": 1,
+      "rating": 5
     },
     {
       "id": 2,
@@ -27,8 +27,8 @@
       "types": [1],
       "sizes": [26, 30, 40],
       "price": [499, 629, 709],
-      "category": 0,
-      "rating": 4
+      "category": 3,
+      "rating": 5
     },
     {
       "id": 3,
@@ -37,8 +37,8 @@
       "types": [0, 1],
       "sizes": [30],
       "price": [399, 499, 599],
-      "category": 0,
-      "rating": 4
+      "category": 1,
+      "rating": 5
     },
     {
       "id": 4,
@@ -47,8 +47,8 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [399, 499, 599],
-      "category": 0,
-      "rating": 4
+      "category": 2,
+      "rating": 3
     },
     {
       "id": 5,
@@ -57,7 +57,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [439, 569, 739],
-      "category": 0,
+      "category": 1,
       "rating": 4
     },
     {
@@ -67,7 +67,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [499, 599, 729],
-      "category": 0,
+      "category": 1,
       "rating": 4
     },
     {
@@ -77,7 +77,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [499, 609, 719],
-      "category": 0,
+      "category": 4,
       "rating": 4
     },
     {
@@ -87,7 +87,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [439, 569, 699],
-      "category": 0,
+      "category": 1,
       "rating": 4
     },
     {
@@ -97,8 +97,8 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [439, 569, 689],
-      "category": 0,
-      "rating": 4
+      "category": 1,
+      "rating": 2
     },
     {
       "id": 10,
@@ -107,8 +107,8 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [439, 559, 699],
-      "category": 0,
-      "rating": 4
+      "category": 1,
+      "rating": 5
     },
     {
       "id": 11,
@@ -117,7 +117,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": [439, 559, 679],
-      "category": 0,
+      "category": 2,
       "rating": 4
     }
   ]

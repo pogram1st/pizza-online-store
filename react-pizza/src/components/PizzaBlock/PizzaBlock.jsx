@@ -15,6 +15,7 @@ export const PizzaBlock = ({ types, imgUrl, name, sizes, id, price }) => {
   };
   return (
     <div key={id} className='pizza-block'>
+      {/* <Sceleton /> */}
       <img className='pizza-block__image' src={imgUrl} alt='Pizza' />
       <h4 className='pizza-block__title'>{name}</h4>
       <div className='pizza-block__selector'>
@@ -77,6 +78,7 @@ PizzaBlock.propTypes = {
   imgUrl: PropTypes.string.isRequired,
   sizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   price: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 PizzaBlock.defaultProps = {
@@ -84,4 +86,5 @@ PizzaBlock.defaultProps = {
   types: [],
   price: [],
   sizes: [],
+  isLoading: false,
 };

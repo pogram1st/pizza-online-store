@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Catigories({ items, catigories, setCatigories }) {
+const Catigories = React.memo(function Catigories({ activeCategory, items, onClickCategory }) {
   return (
     <div className='categories'>
       <ul>
         {items &&
           items.map((obj, index) => (
             <li
-              className={catigories === index ? 'active' : ''}
-              onClick={() => setCatigories(index)}
+              className={activeCategory === index ? 'active' : ''}
+              onClick={() => onClickCategory(index)}
               key={obj}
             >
               {obj}
@@ -17,7 +18,16 @@ function Catigories({ items, catigories, setCatigories }) {
       </ul>
     </div>
   );
-}
+});
+
+Catigories.propTypes = {
+  activeCategory: PropTypes.number.isRequired,
+  items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onClickCategory: PropTypes.func,
+};
+
+Catigories.defaultProps = { activeCategory: 0, items: [] };
+
 // Классовый компонент
 // class Catigories extends React.Component {
 //   state = {

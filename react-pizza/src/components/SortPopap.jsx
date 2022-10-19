@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const SortPopap = ({ items }) => {
+export const SortPopap = React.memo(function SortPopap({ items, onClickSortType, activeSortType }) {
   const [visibleSort, setVisibleSort] = React.useState(false);
 
-  const [settingsSort, setSettingsSort] = React.useState(0);
-
-  const changeSort = (index) => {
-    setSettingsSort(index);
+  const changeSort = (type) => {
+    onClickSortType(type);
     setVisibleSort(false);
   };
+
+  const activeLabelSort = items.find((obj) => obj.type === activeSortType);
 
   const sortRef = React.useRef();
 
@@ -50,7 +51,7 @@ export const SortPopap = ({ items }) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={toggleVisibleSort}>{items[settingsSort].name}</span>
+        <span onClick={toggleVisibleSort}>{activeLabelSort.name}</span>
       </div>
       {visibleSort && (
         <div className='sort__popup'>
@@ -58,8 +59,9 @@ export const SortPopap = ({ items }) => {
             {items &&
               items.map((item, index) => (
                 <li
-                  onClick={() => changeSort(index)}
-                  className={settingsSort === index ? 'active' : ''}
+                  key={index}
+                  onClick={() => changeSort(item.type)}
+                  className={activeLabelSort.type === item.type ? 'active' : ''}
                 >
                   {item.name}
                 </li>
@@ -69,4 +71,14 @@ export const SortPopap = ({ items }) => {
       )}
     </div>
   );
+});
+
+SortPopap.propTypes = {
+  activeSortType: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  onClickSortType: PropTypes.func,
+};
+
+SortPopap.defaultProps = {
+  items: [],
 };
