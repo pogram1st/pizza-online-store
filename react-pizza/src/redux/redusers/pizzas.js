@@ -4,7 +4,6 @@ const initalState = {
 };
 
 const pizzas = (state = initalState, action) => {
-  console.log(state);
   if (action.type === 'SET_PIZZAS') {
     return {
       ...state,

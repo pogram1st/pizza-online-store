@@ -3,14 +3,13 @@ import Catigories from '../components/Catigories';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { SortPopap } from '../components/SortPopap';
 
-function Home({ catigories, setCatigories, clickOnCatigories, pizzas }) {
+function Home({ catigories, setCatigories, pizzas }) {
   return (
     <div className='container'>
       <div className='content__top'>
         <Catigories
           catigories={catigories}
           setCatigories={setCatigories}
-          clickOnCatigories={clickOnCatigories}
           items={['Все', 'Мясные', 'Вегетерианская', 'Гриль', 'Острые', 'Закрытые']}
         />
         <SortPopap
@@ -24,9 +23,7 @@ function Home({ catigories, setCatigories, clickOnCatigories, pizzas }) {
       </div>
       <h2 className='content__title'>Все пиццы</h2>
       <div className='content__items'>
-        {pizzas.map((item) => (
-          <PizzaBlock key={item.id} {...item} />
-        ))}
+        {pizzas && pizzas.map((item) => <PizzaBlock key={item.id} {...item} />)}
       </div>
     </div>
   );
