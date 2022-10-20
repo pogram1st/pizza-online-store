@@ -11,7 +11,7 @@ const LoadingPizza = (props) => (
     foregroundColor='#ecebeb'
     {...props}
   >
-    <circle cx='140' cy='130' r='130' />
+    <circle cx='135' cy='120' r='120' />
     <rect x='10' y='280' rx='10' ry='10' width='260' height='25' />
     <rect x='10' y='320' rx='10' ry='10' width='125' height='30' />
     <rect x='145' y='320' rx='10' ry='10' width='125' height='30' />

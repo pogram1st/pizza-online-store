@@ -1,11 +1,15 @@
 import React from 'react';
-import Catigories from '../components/Catigories';
-import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock';
-import LoadingPizza from '../components/PizzaBlock/LoadingPizza';
-import { SortPopap } from '../components/SortPopap';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCategory, setSortBy } from '../redux/actions/filters';
-import { fetchPizzas } from '../redux/actions/pizzas';
+
+import {
+  Catigories,
+  PizzaBlock,
+  LoadingPizza,
+  SortPopap,
+  setCategory,
+  setSortBy,
+  fetchPizzas,
+} from '../components';
 
 const categoryNames = ['Все', 'Мясные', 'Вегетерианская', 'Гриль', 'Острые', 'Закрытые'];
 const sortItems = [
