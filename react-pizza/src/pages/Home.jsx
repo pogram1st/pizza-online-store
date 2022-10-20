@@ -9,6 +9,7 @@ import {
   setCategory,
   setSortBy,
   fetchPizzas,
+  addPizzaToCart,
 } from '../components';
 
 const categoryNames = ['Все', 'Мясные', 'Вегетерианская', 'Гриль', 'Острые', 'Закрытые'];
@@ -20,17 +21,20 @@ const sortItems = [
 
 function Home() {
   const dispatch = useDispatch();
-  const onSelectCategory = React.useCallback((index) => dispatch(setCategory(index)), []);
+  const onSelectCategory = React.useCallback((index) => dispatch(setCategory(index)), [dispatch]);
+
   const items = useSelector(({ pizzas }) => pizzas.items);
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
   const { category, sortBy } = useSelector(({ filters }) => filters);
+  const cartItems = useSelector(({ cart }) => cart.items);
 
-  const onClickSortType = (type) => {
-    dispatch(setSortBy(type));
+  const handleAddPizzaToCart = (obj) => {
+    dispatch(addPizzaToCart(obj));
   };
 
-  // http://localhost:3001/pizzas?_sort=name&_order=asc  Сортировка по названию по возрастанию буквы
-  // http://localhost:3001/pizzas?_sort=name&_order=desc  Сортировка по названию по убыванию буквы
+  const onClickSortType = React.useCallback((type) => {
+    dispatch(setSortBy(type));
+  }, []);
   React.useEffect(() => {
     dispatch(fetchPizzas(sortBy, category));
   }, [category, sortBy]);
@@ -48,8 +52,15 @@ function Home() {
       <h2 className='content__title'>Все пиццы</h2>
       <div className='content__items'>
         {isLoaded
-          ? items.map((item) => <PizzaBlock key={item.id} {...item} />)
-          : Array(12)
+          ? items.map((item) => (
+              <PizzaBlock
+                key={item.id}
+                {...item}
+                onClickAddPizza={handleAddPizzaToCart}
+                addedCount={cartItems[item.id] && cartItems[item.id].length}
+              />
+            ))
+          : Array(8)
               .fill(0)
               .map((item, index) => (
                 <div key={item + index} className='pizza-block'>

@@ -18,7 +18,7 @@
       "sizes": [26, 30],
       "price": [289, 399, 499],
       "category": 1,
-      "rating": 5
+      "rating": 4
     },
     {
       "id": 2,
@@ -28,7 +28,7 @@
       "sizes": [26, 30, 40],
       "price": [499, 629, 709],
       "category": 3,
-      "rating": 5
+      "rating": 4
     },
     {
       "id": 3,
@@ -38,7 +38,7 @@
       "sizes": [30],
       "price": [399, 499, 599],
       "category": 1,
-      "rating": 5
+      "rating": 4
     },
     {
       "id": 4,
@@ -78,7 +78,7 @@
       "sizes": [26, 30, 40],
       "price": [499, 609, 719],
       "category": 4,
-      "rating": 4
+      "rating": 2
     },
     {
       "id": 8,
@@ -119,6 +119,56 @@
       "price": [439, 559, 679],
       "category": 2,
       "rating": 4
+    },
+    {
+      "id": 12,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/a72e30d5507440f5a122626b479f9822_366x366.png",
+      "name": "Четыре сыра 🌱",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": [499, 599, 701],
+      "category": 2,
+      "rating": 5
+    },
+    {
+      "id": 13,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/3e584d1971114a338b1d3f8c81c19c8b_366x366.png",
+      "name": "Арриава!",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": [449, 579, 695],
+      "category": 4,
+      "rating": 4
+    },
+    {
+      "id": 14,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/ec4d690467f047ef9e61fb30f6178a02_366x366.png",
+      "name": "Овощи и грибы 🌱",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": [429, 539, 679],
+      "category": 2,
+      "rating": 3
+    },
+    {
+      "id": 15,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/5cbf7363d54d4cfcb1dad822f16fa261_366x366.png",
+      "name": "Овощи и гриль",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": [499, 589, 677],
+      "category": 3,
+      "rating": 1
+    },
+    {
+      "id": 16,
+      "imgUrl": "https://cdn.dodostatic.net/static/Img/Products/ca12f5cbed9e4814a308ea771d1087ad_366x366.jpeg",
+      "name": "Мясной Стартер",
+      "types": [],
+      "sizes": [26],
+      "price": [179],
+      "category": 5,
+      "rating": 3
     }
   ]
 }

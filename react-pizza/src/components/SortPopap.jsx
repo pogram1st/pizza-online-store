@@ -3,16 +3,20 @@ import PropTypes from 'prop-types';
 
 export const SortPopap = React.memo(function SortPopap({ items, onClickSortType, activeSortType }) {
   const [visibleSort, setVisibleSort] = React.useState(false);
+  const activeLabelSort = items.find((obj) => obj.type === activeSortType);
+  const sortRef = React.useRef();
+
+  const handleOutsideClick = (e) => {
+    const path = e.path || (e.composedPath && e.composedPath());
+    if (!path.includes(sortRef.current)) {
+      setVisibleSort(false);
+    }
+  };
 
   const changeSort = (type) => {
     onClickSortType(type);
     setVisibleSort(false);
   };
-
-  const activeLabelSort = items.find((obj) => obj.type === activeSortType);
-
-  const sortRef = React.useRef();
-
   const toggleVisibleSort = () => {
     setVisibleSort(!visibleSort);
   };
@@ -20,12 +24,6 @@ export const SortPopap = React.memo(function SortPopap({ items, onClickSortType,
   React.useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
   }, []);
-
-  const handleOutsideClick = (e) => {
-    if (!e.path.includes(sortRef.current)) {
-      setVisibleSort(false);
-    }
-  };
 
   React.useEffect(() => {
     return () => {

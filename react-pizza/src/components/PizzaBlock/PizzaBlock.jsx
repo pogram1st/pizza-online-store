@@ -2,7 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-export const PizzaBlock = ({ types, imgUrl, name, sizes, id, price }) => {
+export const PizzaBlock = ({
+  types,
+  imgUrl,
+  name,
+  sizes,
+  id,
+  price,
+  onClickAddPizza,
+  addedCount,
+}) => {
   const aviableTypes = ['тонкое', 'традиционное'];
   const aviableSizes = [26, 30, 40];
   const [activeType, setActiveType] = React.useState(types[0]);
@@ -13,6 +22,24 @@ export const PizzaBlock = ({ types, imgUrl, name, sizes, id, price }) => {
   const clickSizesPizza = (index) => {
     setActiveSizes(index);
   };
+
+  const onAddPizza = () => {
+    const priceCart = price[activeSizes];
+    const typesPizza = aviableTypes[activeType];
+    const sizePizza = aviableSizes[activeSizes];
+    const obj = {
+      id,
+      name,
+      imgUrl,
+      priceCart,
+      typesPizza,
+      sizePizza,
+      size: activeSizes,
+      type: activeType,
+    };
+    onClickAddPizza(obj);
+  };
+
   return (
     <div key={id} className='pizza-block'>
       {/* <Sceleton /> */}
@@ -50,7 +77,7 @@ export const PizzaBlock = ({ types, imgUrl, name, sizes, id, price }) => {
       </div>
       <div className='pizza-block__bottom'>
         <div className='pizza-block__price'>от {price[activeSizes]} ₽</div>
-        <div className='button button--outline button--add'>
+        <div onClick={onAddPizza} className='button button--outline button--add'>
           <svg
             width='12'
             height='12'
@@ -64,7 +91,7 @@ export const PizzaBlock = ({ types, imgUrl, name, sizes, id, price }) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          {addedCount > 0 && <i>{addedCount}</i>}
         </div>
       </div>
     </div>
