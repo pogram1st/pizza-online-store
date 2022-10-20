@@ -12,7 +12,7 @@ export const fetchPizzas = (sortBy, category) => (dispatch) => {
       }_sort=${sortBy}&_order=asc`,
     )
     .then(({ data }) => {
-      Promise(() => setTimeout(() => dispatch(setPizzas(data)), 1000));
+      const timeout = new Promise(() => setTimeout(() => dispatch(setPizzas(data)), 1000));
     });
 };
 
