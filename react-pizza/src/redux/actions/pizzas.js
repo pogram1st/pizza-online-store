@@ -6,11 +6,7 @@ export const fetchPizzas = (sortBy, category) => (dispatch) => {
     payload: false,
   });
   axios
-    .get(
-      `http://localhost:3001/pizzas?${
-        category > 0 ? `category=${category}&` : ''
-      }_sort=${sortBy}&_order=asc`,
-    )
+    .get(`/pizzas?${category > 0 ? `category=${category}&` : ''}_sort=${sortBy}&_order=asc`)
     .then(({ data }) => {
       const timeout = new Promise(() => setTimeout(() => dispatch(setPizzas(data)), 1000));
     });

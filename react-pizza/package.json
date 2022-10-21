@@ -34,6 +34,7 @@
       "react-app/jest"
     ]
   },
+  "proxy": "http://localhost:3001",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -46,6 +47,9 @@
       "last 1 safari version"
     ]
   },
+  "web_accessible_resources": [
+    "./src/scss/fonts/*.*"
+  ],
   "main": "index.js",
   "license": "MIT"
 }

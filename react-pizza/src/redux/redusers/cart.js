@@ -14,15 +14,13 @@ const cart = (state = initalState, action) => {
           : [...state.items[action.payload.id], action.payload],
       };
 
-      const pizzasCount = [].concat.apply([], Object.values(newItems)).length;
-      const cartItemsPrice = [].concat
-        .apply([], Object.values(newItems))
-        .reduce((price, item) => price + item.priceCart, 0);
+      const pizzasCount = Object.values(newItems).flat();
+      const cartItemsPrice = pizzasCount.reduce((price, item) => price + item.priceCart, 0);
 
       return {
         ...state,
         items: newItems,
-        totalCount: pizzasCount,
+        totalCount: pizzasCount.length,
         totalPrice: cartItemsPrice,
       };
     }
