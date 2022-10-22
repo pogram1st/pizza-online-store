@@ -5,5 +5,11 @@ export { SortPopap } from '../components/SortPopap';
 export { setCategory } from '../redux/actions/filters';
 export { setSortBy } from '../redux/actions/filters';
 export { fetchPizzas } from '../redux/actions/pizzas';
-export { addPizzaToCart } from '../redux/actions/cart';
+export {
+  addPizzaToCart,
+  clearCart,
+  removeCartItem,
+  plusCartItem,
+  minusCartItem,
+} from '../redux/actions/cart';
 export { default as CartItem } from '../components/CartItem';
