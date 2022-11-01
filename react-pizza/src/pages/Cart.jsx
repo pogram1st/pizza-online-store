@@ -27,10 +27,8 @@ export const Cart = () => {
 
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);
   const addedPizzas = Object.keys(items).map((key) => {
-    console.log(items[key]);
     return items[key].items[0];
   });
-  console.log(items);
   return (
     <div className='container container--cart'>
       {!addedPizzas.length ? (
@@ -127,16 +125,16 @@ export const Cart = () => {
             </div>
           </div>
           <div className='content__items'>
-            {addedPizzas.map((obj) => (
+            {addedPizzas.map((obj, index) => (
               <CartItem
-                key={obj.id}
+                key={index + `${obj.id}${obj.sizePizza}${obj.typesPizza}`}
                 id={obj.id}
                 name={obj.name}
                 size={obj.sizePizza}
                 type={obj.typesPizza}
-                price={items[obj.id].totalPrice}
+                price={items[`${obj.id}${obj.sizePizza}${obj.typesPizza}`].totalPrice}
                 imgUrl={obj.imgUrl}
-                coutPizzas={items[obj.id].items.length}
+                coutPizzas={items[`${obj.id}${obj.sizePizza}${obj.typesPizza}`].items.length}
                 onRemovePizza={onRemovePizza}
                 onMinus={onMinusItem}
                 onPlus={onPlusItem}

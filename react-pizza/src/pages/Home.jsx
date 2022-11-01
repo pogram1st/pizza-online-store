@@ -27,11 +27,12 @@ function Home() {
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
   const { category, sortBy } = useSelector(({ filters }) => filters);
   const cartItems = useSelector(({ cart }) => cart.items);
-
   const handleAddPizzaToCart = (obj) => {
     dispatch(addPizzaToCart(obj));
   };
-
+  const addedCount = (id, size, type) => {
+    const idishnik = `${id}${size}${type}`;
+  };
   const onClickSortType = React.useCallback((type) => {
     dispatch(setSortBy(type));
   }, []);
@@ -56,8 +57,13 @@ function Home() {
               <PizzaBlock
                 key={item.id}
                 {...item}
+                cartItems={cartItems}
                 onClickAddPizza={handleAddPizzaToCart}
-                addedCount={cartItems[item.id] && cartItems[item.id].items.length}
+                addedCount={
+                  addedCount(item.id, item.size, item.type)
+                  // cartItems[`${item.id}${item.size}${item.type}`] &&
+                  // cartItems[`${item.id}${item.size}${item.type}`].items.length
+                }
               />
             ))
           : Array(8)

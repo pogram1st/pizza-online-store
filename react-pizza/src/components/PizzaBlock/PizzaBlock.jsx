@@ -11,6 +11,7 @@ export const PizzaBlock = ({
   price,
   onClickAddPizza,
   addedCount,
+  cartItems,
 }) => {
   const aviableTypes = ['тонкое', 'традиционное'];
   const aviableSizes = [26, 30, 40];
@@ -22,7 +23,7 @@ export const PizzaBlock = ({
   const clickSizesPizza = (index) => {
     setActiveSizes(index);
   };
-
+  let count = 0;
   const onAddPizza = () => {
     const priceCart = price[activeSizes];
     const typesPizza = aviableTypes[activeType];
@@ -37,9 +38,11 @@ export const PizzaBlock = ({
       size: activeSizes,
       type: activeType,
     };
+    // const idi = `${id}${aviableSizes[activeSizes]}${aviableTypes[activeType]}`;
+    // const arr = cartItems[`${id}${aviableSizes[activeSizes]}${aviableTypes[activeType]}`];
+    // count = arr.items.length;
     onClickAddPizza(obj);
   };
-
   return (
     <div key={id} className='pizza-block'>
       {/* <Sceleton /> */}
@@ -91,7 +94,7 @@ export const PizzaBlock = ({
             />
           </svg>
           <span>Добавить</span>
-          {addedCount > 0 && <i>{addedCount}</i>}
+          {count > 0 && <i>{count}</i>}
         </div>
       </div>
     </div>
