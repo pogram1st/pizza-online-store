@@ -27,11 +27,9 @@ function Home() {
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
   const { category, sortBy } = useSelector(({ filters }) => filters);
   const cartItems = useSelector(({ cart }) => cart.items);
+  const addedPizzaId = useSelector(({ countPizzasId }) => countPizzasId.items);
   const handleAddPizzaToCart = (obj) => {
     dispatch(addPizzaToCart(obj));
-  };
-  const addedCount = (id, size, type) => {
-    const idishnik = `${id}${size}${type}`;
   };
   const onClickSortType = React.useCallback((type) => {
     dispatch(setSortBy(type));
@@ -59,8 +57,10 @@ function Home() {
                 {...item}
                 cartItems={cartItems}
                 onClickAddPizza={handleAddPizzaToCart}
+                addedPizzaId={addedPizzaId}
+                dispatch={dispatch}
                 addedCount={
-                  addedCount(item.id, item.size, item.type)
+                  addedPizzaId[item.id] ? addedPizzaId[item.id] : 0
                   // cartItems[`${item.id}${item.size}${item.type}`] &&
                   // cartItems[`${item.id}${item.size}${item.type}`].items.length
                 }

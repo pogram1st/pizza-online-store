@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { addPizzasId } from '../../redux/actions/countPizzasId';
 
 export const PizzaBlock = ({
   types,
@@ -12,6 +13,8 @@ export const PizzaBlock = ({
   onClickAddPizza,
   addedCount,
   cartItems,
+  addedPizzaId,
+  dispatch,
 }) => {
   const aviableTypes = ['тонкое', 'традиционное'];
   const aviableSizes = [26, 30, 40];
@@ -23,11 +26,11 @@ export const PizzaBlock = ({
   const clickSizesPizza = (index) => {
     setActiveSizes(index);
   };
-  let count = 0;
   const onAddPizza = () => {
     const priceCart = price[activeSizes];
     const typesPizza = aviableTypes[activeType];
     const sizePizza = aviableSizes[activeSizes];
+    dispatch(addPizzasId(id));
     const obj = {
       id,
       name,
@@ -38,9 +41,6 @@ export const PizzaBlock = ({
       size: activeSizes,
       type: activeType,
     };
-    // const idi = `${id}${aviableSizes[activeSizes]}${aviableTypes[activeType]}`;
-    // const arr = cartItems[`${id}${aviableSizes[activeSizes]}${aviableTypes[activeType]}`];
-    // count = arr.items.length;
     onClickAddPizza(obj);
   };
   return (
@@ -94,7 +94,7 @@ export const PizzaBlock = ({
             />
           </svg>
           <span>Добавить</span>
-          {count > 0 && <i>{count}</i>}
+          {addedCount > 0 && <i>{addedCount}</i>}
         </div>
       </div>
     </div>

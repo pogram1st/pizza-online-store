@@ -1,28 +1,42 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { CartItem, clearCart, removeCartItem, plusCartItem, minusCartItem } from '../components';
+import {
+  CartItem,
+  clearCart,
+  removeCartItem,
+  plusCartItem,
+  minusCartItem,
+  addPizzasId,
+  removePizzaId,
+  clearCountPizzaId,
+  deleteAllPizzasId,
+} from '../components';
 
 export const Cart = () => {
   const dispatch = useDispatch();
   const clearCartItems = () => {
     if (window.confirm('Вы действительно хотите очистить корзину?')) {
       dispatch(clearCart());
+      dispatch(deleteAllPizzasId());
     }
   };
 
-  const onRemovePizza = (id, name) => {
+  const onRemovePizza = (id, name, chId) => {
     if (window.confirm(`Вы действительно хотите удалить пиццу "${name}" из корзины?`)) {
       dispatch(removeCartItem(id));
+      dispatch(clearCountPizzaId(chId));
     }
   };
 
-  const onPlusItem = (id) => {
+  const onPlusItem = (id, chId) => {
     dispatch(plusCartItem(id));
+    dispatch(addPizzasId(chId));
   };
 
-  const onMinusItem = (id) => {
+  const onMinusItem = (id, chId) => {
     dispatch(minusCartItem(id));
+    dispatch(removePizzaId(chId));
   };
 
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);

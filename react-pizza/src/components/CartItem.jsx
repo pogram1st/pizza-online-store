@@ -3,15 +3,15 @@ import React from 'react';
 function CartItem({ name, type, size, price, coutPizzas, id, onRemovePizza, onMinus, onPlus }) {
   const handleRemovePizza = () => {
     const indet = `${id}${size}${type}`;
-    onRemovePizza(indet, name);
+    onRemovePizza(indet, name, id);
   };
 
   const handlePlusItem = () => {
-    onPlus(`${id}${size}${type}`);
+    onPlus(`${id}${size}${type}`, id);
   };
 
   const handleMinusItem = () => {
-    onMinus(`${id}${size}${type}`);
+    onMinus(`${id}${size}${type}`, id);
   };
 
   return (

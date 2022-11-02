@@ -12,4 +12,10 @@ export {
   plusCartItem,
   minusCartItem,
 } from '../redux/actions/cart';
+export {
+  addPizzasId,
+  removePizzaId,
+  clearCountPizzaId,
+  deleteAllPizzasId,
+} from '../redux/actions/countPizzasId';
 export { default as CartItem } from '../components/CartItem';
