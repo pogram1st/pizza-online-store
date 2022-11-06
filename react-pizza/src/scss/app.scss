@@ -110,6 +110,7 @@ body {
 
   &__item {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     border-top: 1px solid $gray-line;
     padding-top: 30px;
@@ -341,5 +342,126 @@ body {
     padding: 0;
     margin: 0 auto;
     width: 400px;
+  }
+  .cart {
+    &__item {
+      display: flex;
+      width: 100%;
+      border-top: 1px solid $gray-line;
+      padding-top: 30px;
+      margin-top: 30px;
+
+      &-img {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        width: 10%;
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 30%;
+        margin-left: 30px;
+
+        h3 {
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 0.01em;
+        }
+
+        p {
+          font-size: 10px;
+          color: #8d8d8d;
+        }
+      }
+
+      &-count {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 13%;
+
+        &-minus {
+          svg {
+            path:first-of-type {
+              display: none;
+            }
+          }
+        }
+
+        b {
+          font-size: 14px;
+        }
+      }
+
+      &-price {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25%;
+
+        b {
+          font-weight: bold;
+          font-size: 14px;
+          letter-spacing: 0.01em;
+        }
+      }
+    }
+
+    &__bottom {
+      margin: 50px 0;
+      margin-bottom: 30px;
+      &-details {
+        span {
+          font-size: 16px;
+        }
+      }
+      &-buttons {
+        margin-top: 40px;
+
+        .go-back-btn {
+          width: 190px;
+        }
+
+        .pay-btn {
+          font-size: 16px;
+          width: 190px;
+          padding: 16px;
+        }
+      }
+    }
+    &--empty {
+      margin: 0 auto;
+      width: 320px;
+
+      h2 {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 10px;
+      }
+      img {
+        display: block;
+        width: 150px;
+        margin: 45px auto 60px;
+      }
+      .button--black {
+        padding: 12px 0 14px;
+        width: 190px;
+        margin: 30px auto;
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
   }
 }
