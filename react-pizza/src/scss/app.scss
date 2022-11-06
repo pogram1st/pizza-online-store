@@ -324,8 +324,9 @@ body {
     padding: 0 !important;
   }
   body {
+    margin: 0 auto;
     padding: 0;
-    min-width: 765px;
+    width: 765px;
   }
   .wrapper {
     width: 765px;
@@ -334,6 +335,11 @@ body {
 
 @media (max-width: 500px) {
   .wrapper {
+    width: 400px;
+  }
+  body {
+    padding: 0;
+    margin: 0 auto;
     width: 400px;
   }
 }
