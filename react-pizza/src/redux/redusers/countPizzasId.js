@@ -33,7 +33,10 @@ const cartId = (state = initalState, action) => {
     case 'CLEAR_COUNT_PIZZA_ID': {
       return {
         ...state,
-        items: { ...state.items, [action.payload]: 0 },
+        items: {
+          ...state.items,
+          [action.payload.id]: state.items[action.payload.id] - [action.payload.coutPizzas],
+        },
       };
     }
     case 'DELETE_ALL_PIZZAS_ID': {

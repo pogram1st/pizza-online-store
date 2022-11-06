@@ -22,10 +22,10 @@ export const Cart = () => {
     }
   };
 
-  const onRemovePizza = (id, name, chId) => {
+  const onRemovePizza = (id, name, chId, coutPizzas) => {
     if (window.confirm(`Вы действительно хотите удалить пиццу "${name}" из корзины?`)) {
       dispatch(removeCartItem(id));
-      dispatch(clearCountPizzaId(chId));
+      dispatch(clearCountPizzaId(chId, coutPizzas));
     }
   };
 
