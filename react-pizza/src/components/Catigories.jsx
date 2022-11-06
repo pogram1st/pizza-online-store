@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Catigories = React.memo(function Catigories({ activeCategory, items, onClickCategory }) {
+  const ulRef = React.useRef();
   return (
     <div className='categories'>
-      <ul>
+      <button onClick={() => ulRef.current.classList.toggle('none')} className='button none'>
+        Категории
+      </button>
+      <ul ref={ulRef} className='none'>
         {items &&
           items.map((obj, index) => (
             <li

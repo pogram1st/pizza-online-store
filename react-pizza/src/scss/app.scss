@@ -312,3 +312,28 @@ body {
     }
   }
 }
+
+@media (max-width: 1500px) {
+  .wrapper {
+    max-width: 1140px;
+  }
+}
+
+@media (max-width: 1239px) {
+  .content {
+    padding: 0 !important;
+  }
+  body {
+    padding: 0;
+    min-width: 765px;
+  }
+  .wrapper {
+    width: 765px;
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    width: 400px;
+  }
+}

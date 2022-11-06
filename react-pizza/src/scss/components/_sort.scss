@@ -54,3 +54,19 @@
     }
   }
 }
+
+@media (max-width: 1239px) {
+  .sort {
+    .sort__label {
+      font-size: 14px;
+      margin-top: 30px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .sort .sort__label {
+    font-size: 14px;
+    margin-top: 0px;
+  }
+}
