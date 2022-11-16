@@ -2,10 +2,19 @@ import React from 'react';
 import pizzaLogo from '../assets/img/pizza-logo.svg';
 import Button from './Button';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectIsAuth } from '../redux/slices/auth';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const isAuth = useSelector(selectIsAuth);
   const { totalPrice, totalCount } = useSelector(({ cart }) => cart);
+  const onClickLogout = () => {
+    if (window.confirm('Вы действительно хотите выйти?')) {
+      dispatch(logout());
+      window.localStorage.removeItem('token');
+    }
+  };
   return (
     <div className='header'>
       <div className='container'>
@@ -18,8 +27,30 @@ const Header = () => {
             </div>
           </div>
         </Link>
-        <Link to='/cart'>
-          <div className='header__cart'>
+
+        <div className='header__buttons'>
+          <div className='login-reg'>
+            {isAuth ? (
+              <div onClick={onClickLogout} className='logout'>
+                <Button>Выход</Button>
+              </div>
+            ) : (
+              <>
+                <Link to={'/login'}>
+                  <Button outline className={'button'}>
+                    Вход
+                  </Button>
+                </Link>
+                <Link to={'/register'}>
+                  <Button outline className={'button'}>
+                    Регистрация
+                  </Button>
+                </Link>
+              </>
+            )}
+          </div>
+
+          <Link to='/cart'>
             <Button className='button--cart'>
               <span>{totalPrice} ₽</span>
               <div className='button__delimiter'></div>
@@ -54,8 +85,8 @@ const Header = () => {
               </svg>
               <span>{totalCount > 0 ? totalCount : ''}</span>
             </Button>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );

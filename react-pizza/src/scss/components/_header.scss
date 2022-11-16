@@ -10,6 +10,14 @@
     justify-content: space-between;
   }
 
+  &__buttons {
+    align-items: center;
+    display: flex;
+    button {
+      margin-left: 20px;
+    }
+  }
+
   &__logo {
     display: flex;
 

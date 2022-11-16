@@ -1,17 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import {
-  Catigories,
-  PizzaBlock,
-  LoadingPizza,
-  SortPopap,
-  setCategory,
-  setSortBy,
-  fetchPizzas,
-  addPizzaToCart,
-} from '../components';
-
+import { setSortBy, setCategory } from '../redux/slices/filters';
+import { Catigories, PizzaBlock, LoadingPizza, SortPopap } from '../components';
+import { addPizzaToCart } from '../redux/slices/cart';
+import { fetchNamePizzas, fetchPizzas, fetchPricePizzas } from '../redux/slices/pizzas';
+import { addPizzasId } from '../redux/slices/countPizzas';
 const categoryNames = ['Все', 'Мясные', 'Вегетерианская', 'Гриль', 'Острые', 'Закрытые'];
 const sortItems = [
   { name: 'популярности', type: 'rating' },
@@ -21,11 +14,14 @@ const sortItems = [
 
 function Home() {
   const dispatch = useDispatch();
-  const onSelectCategory = React.useCallback((index) => dispatch(setCategory(index)), [dispatch]);
-
-  const items = useSelector(({ pizzas }) => pizzas.items);
-  const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
+  React.useEffect(() => {
+    dispatch(fetchPizzas({ category, sortBy }));
+  }, []);
+  const onSelectCategory = React.useCallback((index) => dispatch(setCategory(index)), []);
   const { category, sortBy } = useSelector(({ filters }) => filters);
+  let items = useSelector(({ pizzas }) => pizzas.items);
+  items = category === 0 ? items : items.filter((obj) => obj.category === category);
+  const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
   const cartItems = useSelector(({ cart }) => cart.items);
   const addedPizzaId = useSelector(({ countPizzasId }) => countPizzasId.items);
   const handleAddPizzaToCart = (obj) => {
@@ -35,9 +31,8 @@ function Home() {
     dispatch(setSortBy(type));
   }, []);
   React.useEffect(() => {
-    dispatch(fetchPizzas(sortBy, category));
+    dispatch(fetchPizzas({ category, sortBy }));
   }, [category, sortBy]);
-
   return (
     <div className='container'>
       <div className='content__top'>
@@ -59,11 +54,7 @@ function Home() {
                 onClickAddPizza={handleAddPizzaToCart}
                 addedPizzaId={addedPizzaId}
                 dispatch={dispatch}
-                addedCount={
-                  addedPizzaId[item.id] ? addedPizzaId[item.id] : 0
-                  // cartItems[`${item.id}${item.size}${item.type}`] &&
-                  // cartItems[`${item.id}${item.size}${item.type}`].items.length
-                }
+                addedCount={addedPizzaId[item.id] ? addedPizzaId[item.id] : 0}
               />
             ))
           : Array(8)

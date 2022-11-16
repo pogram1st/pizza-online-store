@@ -1,17 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { CartItem } from '../components';
+import { clearCart, removeCartItem, plusCartItem, minusCartItem } from '../redux/slices/cart';
 import {
-  CartItem,
-  clearCart,
-  removeCartItem,
-  plusCartItem,
-  minusCartItem,
-  addPizzasId,
-  removePizzaId,
   clearCountPizzaId,
+  removePizzaId,
   deleteAllPizzasId,
-} from '../components';
+  addPizzasId,
+} from '../redux/slices/countPizzas';
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -25,7 +22,7 @@ export const Cart = () => {
   const onRemovePizza = (id, name, chId, coutPizzas) => {
     if (window.confirm(`Вы действительно хотите удалить пиццу "${name}" из корзины?`)) {
       dispatch(removeCartItem(id));
-      dispatch(clearCountPizzaId(chId, coutPizzas));
+      dispatch(clearCountPizzaId({ chId, coutPizzas }));
     }
   };
 

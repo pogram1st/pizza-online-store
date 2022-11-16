@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { addPizzasId } from '../../redux/actions/countPizzasId';
+import { addPizzasId } from '../../redux/slices/countPizzas';
 
 export const PizzaBlock = ({
   types,
@@ -46,7 +46,7 @@ export const PizzaBlock = ({
   return (
     <div key={id} className='pizza-block'>
       {/* <Sceleton /> */}
-      <img className='pizza-block__image' src={imgUrl} alt='Pizza' />
+      <img width={260} height={260} className='pizza-block__image' src={imgUrl} alt='Pizza' />
       <h4 className='pizza-block__title'>{name}</h4>
       <div className='pizza-block__selector'>
         <ul>
