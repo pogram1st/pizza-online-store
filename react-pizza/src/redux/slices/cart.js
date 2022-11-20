@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from '../../axios';
+// import axios from '../../axios';
 
 export const addPizzaToCart = createAsyncThunk('/cart/addPizzaToCart', async (pizzaObj) => {
   return pizzaObj;
@@ -19,10 +19,6 @@ export const minusCartItem = createAsyncThunk('/cart/minusCartItem', async (id) 
   return id;
 });
 
-export const cartUser = createAsyncThunk('/cart/cartUser', async (user) => {
-  return user;
-});
-
 const getTotalPrice = (arr) => arr.reduce((price, item) => price + item.priceCart, 0);
 
 const initialState = {
@@ -36,32 +32,20 @@ const cartSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // Add Cart Item
-    [cartUser.fulfilled]: (state, action) => {
-      console.log(action);
-      // state.items = state.items;
-      // state.totalPrice = state.totalPrice;
-      // state.totalCount = state.totalCount;
-    },
-    [cartUser.rejected]: (state) => {
-      state.items = state.items;
-      state.totalPrice = state.totalPrice;
-      state.totalCount = state.totalCount;
-    },
-    [addPizzaToCart.fulfilled]: async (state, action) => {
+    [addPizzaToCart.fulfilled]: (state, action) => {
       const currentPizzaItems = !state.items[
-        `${action.meta.arg.id}${action.meta.arg.sizePizza}${action.meta.arg.typesPizza}`
+        `${action.payload.id}${action.payload.sizePizza}${action.payload.typesPizza}`
       ]
-        ? [action.meta.arg]
+        ? [action.payload]
         : [
             ...state.items[
-              `${action.meta.arg.id}${action.meta.arg.sizePizza}${action.meta.arg.typesPizza}`
+              `${action.payload.id}${action.payload.sizePizza}${action.payload.typesPizza}`
             ].items,
-            action.meta.arg,
+            action.payload,
           ];
       const newItems = {
         ...state.items,
-        [`${action.meta.arg.id}${action.meta.arg.sizePizza}${action.meta.arg.typesPizza}`]: {
+        [`${action.payload.id}${action.payload.sizePizza}${action.payload.typesPizza}`]: {
           items: currentPizzaItems,
           totalPrice: getTotalPrice(currentPizzaItems),
         },
@@ -70,7 +54,7 @@ const cartSlice = createSlice({
         ...state,
         items: newItems,
         totalCount: state.totalCount + 1,
-        totalPrice: state.totalPrice + action.meta.arg.priceCart,
+        totalPrice: state.totalPrice + action.payload.priceCart,
       };
     },
     [addPizzaToCart.rejected]: (state, action) => {
