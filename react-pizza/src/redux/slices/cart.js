@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import axios from '../../axios';
+import axios from '../../axios';
+import { selectIsAuth } from './auth';
 
 export const addPizzaToCart = createAsyncThunk('/cart/addPizzaToCart', async (pizzaObj) => {
   return pizzaObj;
@@ -19,6 +20,16 @@ export const minusCartItem = createAsyncThunk('/cart/minusCartItem', async (id) 
   return id;
 });
 
+export const fetchCartItemsDB = createAsyncThunk('cart/fetchCartItemsDB', async (params) => {
+  console.log(params);
+  await axios.patch('/add-pizza', params);
+});
+
+export const fetchCart = createAsyncThunk('cart/fetchCart', async (params) => {
+  console.log(params.cart[0]);
+  return params.cart[0];
+});
+
 const getTotalPrice = (arr) => arr.reduce((price, item) => price + item.priceCart, 0);
 
 const initialState = {
@@ -32,6 +43,11 @@ const cartSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [fetchCart.fulfilled]: (state, action) => {
+      return {
+        ...action.payload,
+      };
+    },
     [addPizzaToCart.fulfilled]: (state, action) => {
       const currentPizzaItems = !state.items[
         `${action.payload.id}${action.payload.sizePizza}${action.payload.typesPizza}`

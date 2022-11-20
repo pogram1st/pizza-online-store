@@ -2,22 +2,36 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CartItem } from '../components';
-import { clearCart, removeCartItem, plusCartItem, minusCartItem } from '../redux/slices/cart';
+import {
+  clearCart,
+  removeCartItem,
+  plusCartItem,
+  minusCartItem,
+  fetchCartItemsDB,
+} from '../redux/slices/cart';
 import {
   clearCountPizzaId,
   removePizzaId,
   deleteAllPizzasId,
   addPizzasId,
 } from '../redux/slices/countPizzas';
+import { selectIsAuth } from '../redux/slices/auth';
 
 export const Cart = () => {
   const dispatch = useDispatch();
+  const isAuth = useSelector(selectIsAuth);
   const clearCartItems = () => {
     if (window.confirm('Вы действительно хотите очистить корзину?')) {
       dispatch(clearCart());
       dispatch(deleteAllPizzasId());
     }
   };
+  let cart = useSelector(({ cart }) => cart);
+  React.useEffect(() => {
+    if (isAuth) {
+      dispatch(fetchCartItemsDB({ cart: cart }));
+    }
+  }, [cart, isAuth]);
 
   const onRemovePizza = (id, name, chId, coutPizzas) => {
     if (window.confirm(`Вы действительно хотите удалить пиццу "${name}" из корзины?`)) {

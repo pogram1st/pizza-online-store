@@ -4,6 +4,7 @@ import Button from './Button';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectIsAuth } from '../redux/slices/auth';
+import { clearCart } from '../redux/slices/cart';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const Header = () => {
     if (window.confirm('Вы действительно хотите выйти?')) {
       dispatch(logout());
       window.localStorage.removeItem('token');
+      dispatch(clearCart());
     }
   };
   return (

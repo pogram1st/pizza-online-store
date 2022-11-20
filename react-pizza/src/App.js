@@ -5,17 +5,25 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import { Cart } from './pages/Cart';
 import { Login } from './pages/Login/Login';
-import { fetchAuthMe } from './redux/slices/auth';
+import { fetchAuthMe, selectIsAuth } from './redux/slices/auth';
+import { fetchCart } from './redux/slices/cart';
 
 function App() {
   const dispatch = useDispatch();
-
+  const isAuth = useSelector(selectIsAuth);
+  const authCart = useSelector(({ auth }) => auth.data);
   React.useEffect(() => {
     async function getAuth() {
       await dispatch(fetchAuthMe());
     }
     getAuth();
   }, []);
+
+  React.useEffect(() => {
+    if (authCart) {
+      dispatch(fetchCart(authCart));
+    }
+  }, [authCart]);
   return (
     <div className='wrapper'>
       <Header />
