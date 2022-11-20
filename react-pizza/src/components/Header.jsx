@@ -30,7 +30,7 @@ const Header = () => {
 
         <div className='header__buttons'>
           <div className='login-reg'>
-            {isAuth ? (
+            {window.localStorage.getItem('token') || isAuth ? (
               <div onClick={onClickLogout} className='logout'>
                 <Button>Выход</Button>
               </div>

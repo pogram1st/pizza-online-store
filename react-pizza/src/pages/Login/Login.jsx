@@ -38,18 +38,22 @@ export const Login = () => {
 
   return (
     <div className={style.root}>
-      <h1>Вход в личный кабинет</h1>
+      <h2>Вход на сайт</h2>
       <div className={style.container}>
         <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <input
+            className={style.input1}
             type='email'
             placeholder='Email'
             {...register('email', { required: 'Укажите почту' })}
+            required
           />
           <input
+            className={style.input2}
             type='password'
             placeholder='Пароль'
             {...register('password', { required: 'Укажите пароль' })}
+            required
           />
           <button disabled={!isValid} type='submit'>
             Войти

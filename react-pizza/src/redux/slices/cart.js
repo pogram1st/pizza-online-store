@@ -19,6 +19,10 @@ export const minusCartItem = createAsyncThunk('/cart/minusCartItem', async (id) 
   return id;
 });
 
+export const cartUser = createAsyncThunk('/cart/cartUser', async (user) => {
+  return user;
+});
+
 const getTotalPrice = (arr) => arr.reduce((price, item) => price + item.priceCart, 0);
 
 const initialState = {
@@ -33,7 +37,18 @@ const cartSlice = createSlice({
   reducers: {},
   extraReducers: {
     // Add Cart Item
-    [addPizzaToCart.fulfilled]: (state, action) => {
+    [cartUser.fulfilled]: (state, action) => {
+      console.log(action);
+      // state.items = state.items;
+      // state.totalPrice = state.totalPrice;
+      // state.totalCount = state.totalCount;
+    },
+    [cartUser.rejected]: (state) => {
+      state.items = state.items;
+      state.totalPrice = state.totalPrice;
+      state.totalCount = state.totalCount;
+    },
+    [addPizzaToCart.fulfilled]: async (state, action) => {
       const currentPizzaItems = !state.items[
         `${action.meta.arg.id}${action.meta.arg.sizePizza}${action.meta.arg.typesPizza}`
       ]

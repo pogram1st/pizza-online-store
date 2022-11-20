@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/Header';
 import Home from './pages/Home';
 import { Cart } from './pages/Cart';
@@ -9,8 +9,12 @@ import { fetchAuthMe } from './redux/slices/auth';
 
 function App() {
   const dispatch = useDispatch();
+
   React.useEffect(() => {
-    dispatch(fetchAuthMe());
+    async function getAuth() {
+      await dispatch(fetchAuthMe());
+    }
+    getAuth();
   }, []);
   return (
     <div className='wrapper'>
