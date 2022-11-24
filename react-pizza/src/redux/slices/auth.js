@@ -12,7 +12,14 @@ export const fetchAuthMe = createAsyncThunk('auth/fetchUserDataMe', async () => 
 });
 
 export const fetchRegister = createAsyncThunk('auth/fetchRegister', async (params) => {
-  const { data } = await axios.post('/auth/register', params);
+  const { data } = await axios.post('/auth/register', {
+    ...params,
+    cart: {
+      items: {},
+      totalPrice: 0,
+      totalCount: 0,
+    },
+  });
   return data;
 });
 

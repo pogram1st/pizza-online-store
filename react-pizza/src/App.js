@@ -7,6 +7,7 @@ import { Cart } from './pages/Cart';
 import { Login } from './pages/Login/Login';
 import { fetchAuthMe, selectIsAuth } from './redux/slices/auth';
 import { fetchCart } from './redux/slices/cart';
+import { Register } from './pages/Register/Register';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           <Route path='/' element={<Home />} exact />
           <Route path='/cart' element={<Cart />} exact />
           <Route path='/login' element={<Login />} exact />
+          <Route path='/register' element={<Register />} exact />
         </Routes>
       </div>
     </div>
