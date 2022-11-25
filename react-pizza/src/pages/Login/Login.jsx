@@ -10,11 +10,12 @@ import { selectIsAuth } from '../../redux/slices/auth';
 export const Login = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
+  const [errorAuth, setErrorAuth] = React.useState(false);
   const {
     register,
     handleSubmit,
     setError,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
     defaultValues: {
       email: '',
@@ -25,10 +26,11 @@ export const Login = () => {
   if (isAuth) {
     return <Navigate to='/' />;
   }
+
   const onSubmit = async (values) => {
     const data = await dispatch(fetchAuth(values));
     if (!data.payload) {
-      alert('Неверный логин или пароль');
+      setErrorAuth(true);
     }
     if ('token' in data.payload) {
       window.localStorage.setItem('token', data.payload.token);
@@ -41,23 +43,20 @@ export const Login = () => {
       <h2>Вход на сайт</h2>
       <div className={style.container}>
         <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+          {errorAuth && <p>Неверно введен логин или пароль</p>}
           <input
             className={style.input1}
             type='email'
             placeholder='Email'
             {...register('email', { required: 'Укажите почту' })}
-            required
           />
           <input
             className={style.input2}
             type='password'
             placeholder='Пароль'
             {...register('password', { required: 'Укажите пароль' })}
-            required
           />
-          <button disabled={!isValid} type='submit'>
-            Войти
-          </button>
+          <button type='submit'>Войти</button>
         </form>
       </div>
     </div>
