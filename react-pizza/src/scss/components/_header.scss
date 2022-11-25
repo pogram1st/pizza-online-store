@@ -41,6 +41,12 @@
 
 @media (max-width: 500px) {
   .header {
+    .price__cart {
+      display: none;
+    }
+    .razdel__cart {
+      display: none;
+    }
     &__logo {
       display: flex;
 

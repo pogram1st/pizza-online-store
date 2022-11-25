@@ -148,6 +148,7 @@
 
 @media (max-width: 500px) {
   .button {
+    min-width: 0;
     &--circle {
       display: flex;
       align-items: center;

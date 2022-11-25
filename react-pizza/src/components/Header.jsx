@@ -54,9 +54,10 @@ const Header = () => {
 
           <Link to='/cart'>
             <Button className='button--cart'>
-              <span>{totalPrice} ₽</span>
-              <div className='button__delimiter'></div>
+              <span className='price__cart'>{totalPrice} ₽</span>
+              <div className='button__delimiter razdel__cart'></div>
               <svg
+                className=''
                 width='18'
                 height='18'
                 viewBox='0 0 18 18'
