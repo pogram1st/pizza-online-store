@@ -1,6 +1,6 @@
 import axios from 'axios';
 const instance = axios.create({
-  baseURL: 'https://backend-pizza-o.herokuapp.com/',
+  baseURL: 'https://pizza-backend.cyclic.app/',
 });
 instance.interceptors.request.use((config) => {
   config.headers.Authorization = window.localStorage.getItem('token');
